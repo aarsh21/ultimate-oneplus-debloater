@@ -2,7 +2,7 @@
 
 A cautious-but-powerful ADB debloat script for OnePlus/Oppo/OxygenOS devices.
 
-It removes regular bloat automatically, then asks before touching critical apps like Phone/SMS, Health/Fitbit, Android Setup, SIM Toolkit/Airtel Services, accessibility apps, and dark/blur tweaks.
+It removes regular bloat automatically, prevents newly installed apps from being auto-added to the home screen, then asks before touching critical apps like Phone/SMS, Health/Fitbit, Android Setup, SIM Toolkit/Airtel Services, accessibility apps, and dark/blur tweaks.
 
 > Tested workflow target: OxygenOS 16 / Android 16 OnePlus device. Use at your own risk on other builds.
 
@@ -37,6 +37,7 @@ The Google apps below are intentionally protected:
 - Google Services Framework
 - Gboard
 - Android System WebView
+- OnePlus Photos/Gallery (`com.oneplus.gallery`)
 
 ## Regular bloat removed
 
@@ -55,7 +56,7 @@ The regular pass targets common OnePlus/Oppo/HeyTap/ColorOS/Google bloat such as
 
 Unless you use `--yolo`, the script asks before:
 
-- Removing OnePlus stock apps like Clock, Gallery, File Manager, Recorder, Clone Phone, Zen Space
+- Removing OnePlus stock apps like Clock, File Manager, Recorder, Clone Phone, Zen Space; OnePlus Photos/Gallery is kept
 - Removing optional Google apps/services like Gemini, Google Home, Docs, Meet, YouTube Music, ARCore, telemetry/ad services
 - Removing default Phone and Messages UIs
 - Removing Fitbit while keeping Health Connect
@@ -74,7 +75,7 @@ Unless you use `--yolo`, the script asks before:
 
 This includes:
 
-- aggressive OnePlus/Oppo bloat removal
+- aggressive OnePlus/Oppo bloat removal while preserving OnePlus Photos/Gallery
 - all OnePlus AI/prediction services
 - optional Google apps/services while keeping Chrome/Google/Gmail/YouTube/Maps
 - default Phone and Messages removal
@@ -82,6 +83,7 @@ This includes:
 - Android Setup disabled after marking setup complete
 - Airtel/SIM Toolkit hidden
 - Live Caption icon hidden from the volume panel
+- newly installed apps no longer auto-added to home screen
 - AMOLED-ish dark mode + blur-disable flags
 
 **Warning:** YOLO can leave you without a Phone/SMS UI if you did not install replacements.

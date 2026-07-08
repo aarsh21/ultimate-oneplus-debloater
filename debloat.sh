@@ -7,7 +7,7 @@ set -u
 # This is reversible with:
 #   cmd package install-existing --user 0 <package>
 
-VERSION="1.0.0"
+VERSION="1.0.1"
 USER_ID="0"
 DRY_RUN=0
 YOLO=0
@@ -104,7 +104,7 @@ ONEPLUS_APPS=(
   com.oneplus.colorx
   com.oneplus.deskclock
   com.oneplus.filemanager
-  com.oneplus.gallery
+  # com.oneplus.gallery intentionally kept: OnePlus Photos/Gallery is useful for stock camera review/edit flows.
   com.oneplus.mall
   com.oneplus.membership
   com.oneplus.note
@@ -463,6 +463,13 @@ hide_live_caption_button() {
   adb_shell settings put secure accessibility_captioning_enabled 0 || true
 }
 
+prevent_new_apps_on_home_screen() {
+  say ""
+  say "== Preventing newly installed apps from being auto-added to home screen =="
+  adb_shell settings put global is_add_app_to_workspace_for_drawer_mode 0 || true
+  adb_shell settings put secure is_add_app_to_workspace_for_drawer_mode 0 || true
+}
+
 apply_dark_blur_tweaks() {
   say ""
   say "== Applying darkest safe non-root SystemUI tweaks =="
@@ -514,10 +521,11 @@ main() {
   fi
 
   hide_live_caption_button
+  prevent_new_apps_on_home_screen
   remove_group "Regular bloat" "${REGULAR_BLOAT[@]}"
   remove_group "OnePlus/OPlus AI and prediction services" "${ONEPLUS_AI[@]}"
 
-  if [[ "$YOLO" -eq 1 ]] || critical "Remove OnePlus stock apps too? Includes OnePlus Clock, Gallery, File Manager, Recorder, Account, Clone Phone/Backup, Zen Space."; then
+  if [[ "$YOLO" -eq 1 ]] || critical "Remove OnePlus stock apps too? Includes OnePlus Clock, File Manager, Recorder, Account, Clone Phone/Backup, Zen Space. OnePlus Photos/Gallery is kept."; then
     remove_group "OnePlus stock apps" "${ONEPLUS_APPS[@]}"
   fi
 
