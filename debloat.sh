@@ -7,7 +7,7 @@ set -u
 # This is reversible with:
 #   cmd package install-existing --user 0 <package>
 
-VERSION="1.0.1"
+VERSION="1.0.2"
 USER_ID="0"
 DRY_RUN=0
 YOLO=0
@@ -56,7 +56,7 @@ REGULAR_BLOAT=(
   com.coloros.smartsidebar
   com.oplus.contentportal
   com.oplus.multiapp
-  com.oplus.remotecontrol
+  # com.oplus.remotecontrol intentionally kept: useful for IR/device remote features on supported OnePlus models.
   com.google.ar.lens
   com.google.android.projection.gearhead
   com.coloros.accessibilityassistant

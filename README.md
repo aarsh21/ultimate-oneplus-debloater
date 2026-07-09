@@ -38,6 +38,7 @@ The Google apps below are intentionally protected:
 - Gboard
 - Android System WebView
 - OnePlus Photos/Gallery (`com.oneplus.gallery`)
+- OnePlus/OPlus Remote Control (`com.oplus.remotecontrol`)
 
 ## Regular bloat removed
 
@@ -75,7 +76,7 @@ Unless you use `--yolo`, the script asks before:
 
 This includes:
 
-- aggressive OnePlus/Oppo bloat removal while preserving OnePlus Photos/Gallery
+- aggressive OnePlus/Oppo bloat removal while preserving OnePlus Photos/Gallery and Remote Control
 - all OnePlus AI/prediction services
 - optional Google apps/services while keeping Chrome/Google/Gmail/YouTube/Maps
 - default Phone and Messages removal
